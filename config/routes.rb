@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/sign_up', to: "users#new"
+  post 'users', to: "users#create"
+  get 'users/sign_in', to: "sessions#new"
+  resources :sessions, only: [ :create, :destroy]
   resources :histories
 
   root "histories#index"

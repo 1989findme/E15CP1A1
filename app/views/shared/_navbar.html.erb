@@ -12,8 +12,14 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Link1</a></li>
-        <li><a href="#">Link2</a></li>
+        <% if logged? %>
+        Bienvendido <%= current_user.email %>
+        <li><%= link_to "Cerrar sesión", session_path(current_user), method: :delete%></li>
+        <% else %>
+        <li><%= link_to "Iniciar sesión", users_sign_in_path%></li>
+        <li><%= link_to "Registrate", users_sign_up_path%></li>
+        <% end %>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -32,4 +38,3 @@
     </div>
   </div>
 </nav>
-
